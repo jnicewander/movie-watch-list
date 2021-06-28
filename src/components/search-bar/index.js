@@ -1,21 +1,20 @@
 import React from "react"
 
-const SearchBar = ({ value, setValue }) => {
-
-  const handleChange = event => {
-    setValue(event.target.value)
-  }
+const SearchBar = ({ value, onSubmit, onChange }) => { 
 
   return (
-    <label>
-      Search for a movie...
-      <input
-        type="text"
-        name="search"
-        value={value}
-        onChange={e => handleChange(e)}
-      />
-    </label>    
+    <form onSubmit={onSubmit}>
+      <label>
+        Search for a movie...
+        <input
+          type="text"
+          name="query"
+          value={value}
+          onChange={onChange}
+        />
+      </label>
+      <input type="submit" value="Go!" />
+    </form>
   )
 }
 
