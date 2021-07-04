@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MovieCard from '../movie-card'
-
+import WatchListContext from '../../context/watchlist-context'
 
 const Grid = styled.div`
   display: grid;
@@ -17,7 +17,7 @@ const Movies = ({ className, movies, status }) => {
         movies.map(movie => (
           <MovieCard
             key={movie.id}
-            {...movie}
+            movie={movie}
           />
       ))}
     </Grid>
