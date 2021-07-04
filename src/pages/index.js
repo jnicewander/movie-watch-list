@@ -5,7 +5,7 @@ import { useGetMoviesApi } from "../hooks/useGetMoviesApi"
 
 const IndexPage = () => {
   const [userInput, setUserInput] = useState('')
-  const [{ data, status }, doFetch] = useGetMoviesApi();  
+  const [{ data, status }, doFetch] = useGetMoviesApi()
   const { results: movies = [] } = data;
 
   const handleChange = event => {
@@ -24,6 +24,10 @@ const IndexPage = () => {
         value={userInput}
         onSubmit={e => handleSubmit(e)}
         onChange={e => handleChange(e)}
+      />
+      <Movies
+        status={status}
+        movies={movies}
       />
     </main>
   )
