@@ -8,10 +8,14 @@ const api_key = process.env.MOVIE_DB_API_KEY
 exports.handler = async event => {
   const PARAMS = {
     query: '',
+    page: 1,
   }
 
   if(event.queryStringParameters.query) {
     PARAMS.query = event.queryStringParameters.query
+  }
+  if(event.queryStringParameters.page) {
+    PARAMS.page = event.queryStringParameters.page
   }
 
   const {data, errors} = await axios.get(`${base_url}api_key=${api_key}`, {

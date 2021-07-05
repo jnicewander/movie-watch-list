@@ -3,17 +3,22 @@ import axios from 'axios'
 
 export const useGetMoviesApi = () => {
   const [data, setData] = useState({})
-  const [query, setQuery] = useState('')
+  const [queryParams, setQueryParams] = useState({
+    query: '',
+    page: 1,
+  })
   const [status, setStatus] = useState('idle')
 
   useEffect(() => {
-    if(!query) return;
+    if(!queryParams.query) return;
 
     const fetchMovies = async () => {
       setStatus('fetching');
       try {
         const response = await axios('/api/get-movies', {
-          params: { query: query }
+          params: { 
+            ...queryParams
+          }
         });
         const { movies } = await response.data;
         setData(movies);
@@ -23,7 +28,7 @@ export const useGetMoviesApi = () => {
       }
     };
     fetchMovies();
-  }, [query])
+  }, [queryParams])
 
-  return [{ data, status }, setQuery];
+  return [{ data, status }, setQueryParams];
 }
