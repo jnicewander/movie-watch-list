@@ -1,19 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import MovieCard from '../movie-card'
-import WatchListContext from '../../context/watchlist-context'
+import Grid from './grid'
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, minmax(250px, 350px));
-  gap: 1vw;
-`
-
-const Movies = ({ className, movies, status }) => {
-
+const Movies = ({ movies }) => {
   return (
-    <Grid className={className}>
-      {status === 'fetched' &&
+    <Grid>
+      {movies.length > 0 &&
         movies.map(movie => (
           <MovieCard
             key={movie.id}

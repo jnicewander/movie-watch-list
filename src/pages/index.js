@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Layout from '../components/layout'
 import SearchBar from "../components/search-bar"
 import Movies from "../components/movies"
 import { useGetMoviesApi } from "../hooks/useGetMoviesApi"
@@ -18,8 +19,8 @@ const IndexPage = () => {
   }
 
   return (
-    <main>
-      <title>Home || Movie Watch List</title>
+    <Layout>
+      <title>Home || Movie Tracker</title>
       <SearchBar
         value={userInput}
         onSubmit={e => handleSubmit(e)}
@@ -29,7 +30,7 @@ const IndexPage = () => {
         status={status}
         movies={movies}
       />
-    </main>
+    </Layout>
   )
 }
 
