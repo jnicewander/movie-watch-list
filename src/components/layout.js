@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from '../theme/global-style'
 import Header from './header'
