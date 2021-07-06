@@ -5,7 +5,7 @@ const ContainerGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2vw;
-  justify-content: center;
+  justify-items: center;
 `
 
 const Grid = ({ children }) => {

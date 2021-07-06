@@ -1,27 +1,16 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import FallbackPoster from './fallback-poster'
+import Poster from './poster'
 import WatchListContext from '../../context/watchlist-context'
 
 const Container = styled.div`
-  /* TODO replace with link to movie details page */
-`
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  position: relative;
 `
 
-const MovieCard = ({ movie, className }) => {
+const Details = styled.div`
+`
 
-  // some movies don't have posters and no fallback image was provided
-  const Poster = () => {
-    if(movie.poster_path !== null) {
-      const poster = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
-      return <Image loading="lazy" src={poster} alt={`${movie.title} movie poster`} />;
-    }
-    return <FallbackPoster />
-  }
+const MovieCard = ({ movie }) => {
 
   const {
     movies: watchList,
@@ -41,14 +30,15 @@ const MovieCard = ({ movie, className }) => {
   }
 
   return (
-    <Container className={className}>
-      {Poster()}
-      <p>{movie.title}</p>
+    <Container>
+      <Poster movie={movie} />
+      <Details>
+        <p>{movie.title}</p>
 
-      <button onClick={() => handleClick(movie)}>
-        {onWatchList ? "Remove" : "Add Movie"}
-      </button>
-
+        <button onClick={() => handleClick(movie)}>
+          {onWatchList ? "Remove" : "Add Movie"}
+        </button>
+      </Details>
     </Container>
   )
 }
